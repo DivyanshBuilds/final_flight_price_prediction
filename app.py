@@ -76,6 +76,29 @@ def preprocess_input(form_data):
     stops_encoded = ordinal_stops.transform(input_df[["stops"]])[0][0]
     class_encoded = ordinal_class.transform(input_df[["class"]])[0][0]
     
+    # Scale numerical features - KEEP AS DATAFRAME WITH COLUMN NAMES
+    numerical_df = pd.DataFrame([[duration, days_left]], columns=NUMERICAL_COLUMNS)
+    numerical_scaled = scaler.transform(numerical_df)
+    numerical_scaled_df = pd.DataFrame(numerical_scaled, columns=NUMERICAL_COLUMNS)
+    
+    # Combine all features
+    final_input = pd.concat([
+        numerical_scaled_df,
+        pd.DataFrame({'stops_encoded': [stops_encoded], 'class_encoded': [class_encoded]}),
+        ohe_df
+    ], axis=1)
+    
+    return final_input
+    
+    # OneHot encode
+    onehot_cols = ["airline", "source_city", "departure_time", "arrival_time", "destination_city"]
+    ohe_encoded = ohe.transform(input_df[onehot_cols])
+    ohe_df = pd.DataFrame(ohe_encoded, columns=ohe.get_feature_names_out())
+    
+    # Ordinal encode
+    stops_encoded = ordinal_stops.transform(input_df[["stops"]])[0][0]
+    class_encoded = ordinal_class.transform(input_df[["class"]])[0][0]
+    
     # Scale numerical features
     numerical_scaled = scaler.transform([[duration, days_left]])[0]
     
