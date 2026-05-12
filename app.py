@@ -23,7 +23,7 @@ with open("models/scaler.pkl", "rb") as f:
     scaler = pickle.load(f)
 
 # Load ANN model
-ann_model = load_model("models/ann_model.keras", compile=False)
+ann_model = load_model("models/ann_model.h5", compile=False)
 
 
 print("✓ All models loaded successfully")
