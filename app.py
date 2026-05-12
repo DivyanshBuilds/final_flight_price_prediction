@@ -39,6 +39,8 @@ OPTIONS = {
     "class": ["Economy", "Business"]
 }
 
+# Configuration (add this after OPTIONS)
+NUMERICAL_COLUMNS = ["duration", "days_left"]
 
 def preprocess_input(form_data):
     """Preprocess user input to match training pipeline"""
