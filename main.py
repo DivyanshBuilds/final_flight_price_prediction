@@ -3,10 +3,10 @@ Main Pipeline
 Author: Divyansh
 """
 
-from data_ingestion import load_data
-from data_validation import validate_data
-from data_transformer import transform_data
-from model_trainer import train_models
+from src.data_ingestion import load_data
+from src.data_validation import validate_data
+from src.data_transformer import transform_data
+from src.model_trainer import train_models
 
 
 def main():
