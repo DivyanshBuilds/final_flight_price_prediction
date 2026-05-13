@@ -1,3 +1,16 @@
+---
+title: Flight Price Predictor
+emoji: ✈️
+colorFrom: blue
+colorTo: orange
+sdk: docker
+app_port: 7860
+---
+
+# Flight Price Predictor
+
+ML model to predict flight prices using Artificial Neural Network.
+
  ✈️ Flight Price Predictor
 
 A machine learning web application that predicts domestic flight ticket prices in India using an Artificial Neural Network (ANN).
